@@ -1,0 +1,2108 @@
+Course Notes
+
+Integer Division: 2 Types
+1) / division
+	ie. 10/3= 3
+
+2) % mod division
+	ie. 10/3= 1
+
+	5%2= 1
+	32%8= 0
+	17%5= 2
+
+	if(x%2==0) this means that x is even because there is no remainder
+
+	1234 backwards example
+
+	1 * 1000
+	2 * 100
+	3 * 10
+	4 * 1
+
+	firstDigit = 4
+	secondDigit = 3
+	thirdDigit = 2
+	fourthDigit = 1
+
+	4 * 1000
+	3 * 100
+	2 * 10
+	1 * 1
+
+	= 4000 + 300 + 20 + 1 = 4321
+
+	SCANNER NOTES
+
+	before class: import.java.util.Scanner;	to import scanner
+
+	ex:
+
+	public class InputExample {
+		public static void main (String[] args) {
+
+		int number = 3
+		Scanner input = new Scanner(System.in);
+
+		System.out.println("Hey! Enter input:");
+		String inputOne = input.next();
+
+		System.out.println("Now enter an integer!:")
+		String inputTwo = input.next();
+
+
+		int inputTwo = input.nextInt();
+		System.out.println
+
+		}
+	}
+		constructor = special method
+
+September 13, 2016_____________________________________________________
+	
+	/* Notes and stuff I forgot....
+	
+avax.swing package --> 
+
+
+import javax.swing.JOptionPane;  //use JOption Pane and you can use msgbox
+public class __________ {
+	public static void main (String args[]) {
+		JOptionPane.showMessageDialog(null, "Hi")
+System.exit(0); 				 //ends your program without error
+
+
+	string numString = JOptionPane.showInputDialog (null, "enter a value here: ") ; 
+
+	System.out.println ("Sum = {0}"); or ("Sum = " + sum)
+	*/
+
+September 20, 2016_________________________________________________________
+
+public class Casting {
+	/** Main method */
+	public static void main(String[] args) {
+		byte b = 0;
+		short s = 0;
+		int i = 0;
+		long l = 0;
+		
+		float f = 0.0f;
+		double d = 0.0;
+
+		//these are okay lhs is more expresive than rhs
+		d = f;
+		f = l;
+		l = i;
+		i = s;
+		s = b;
+		
+		//these cause an error: lhs is less expresive than rhs
+		b = s;
+		s = i;
+		i = l;
+		l = f;
+		f = d;
+	}
+}		
+
+
+To cast something as a float...3 different ways
+with double and float, the number you put isnt exactly the one that is represented so 
+the .1's add up to .9999999999 instead of 1.0 with double.
+
+//  Float Example Program 
+public class InaccurateDouble 
+{
+	public static void main( String args[] )
+	{
+
+		double d = .1;
+		d = d + .1f;
+		d = d + (float).1;
+		d = (float) (d +.1);
+		d = d +.1;
+		d = d +.1;
+		d = d +.1;
+		d = d +.1;
+		d = d +.1;
+		d = d +.1;
+   		
+   		System.out.println ("d:  " + d);
+   		System.out.println ("d (cast to int) " + (int)d);
+   			* if you cast to int from double, you get 0 instead of .1 
+   			because int doesnt cast, it truncates, or it gets rid of extra info...
+	}
+}
+
+For exactly precise numbers, you can use int up until you need to display
+i.e. our military time homework we converted all to seconds all in int
+floating point numbers can only represent some numbers, there are infinite numbers between values
+with int, there are no values between each int
+
+
+keyword final = its not a variable, its a constant
+style-wise, ALL_CAPS = this is a constant
+i.e. final int TOTAL_GRADES = 4;
+
+char data type 
+ex: char character = 'a';
+characters are actually stored as integers....woah!
+
+asciitable.com --> list of char and what dec they represent and vice versa...
+i dont understand this too well
+
+when you print chars and dont cast them, you print the letter according to the ascii table
+all values of char can fit inside of char, but all ints cannot fit inside of a char, larger 
+and neg ints cant fit into char
+
+remember piano program in VBDB, assigning keys to chars typed
+
+public class Char
+{
+	public static void main(String[] args)
+	{
+		int charAsNum1, charAsNum2, charAsNum3, charAsNum4;
+		char letter1, letter2, letter3;
+		
+		charAsNum1 = 65;
+		charAsNum2 = charAsNum1+1;
+		charAsNum3 = charAsNum2+1;
+		
+		//implicit cast
+		charAsNum4 = 'D';
+		
+		letter1 = 97;  //within range explicit cast not necessary
+		letter2 = 98;
+		letter3 = 'c';
+		
+		System.out.println ("Integers cast as chars: " +      ******casting it means that it turns into 
+							(char) charAsNum1 + " " + 		 		A, B, C, D
+							(char) charAsNum2 + " " + 
+							(char) charAsNum3 + " " + 
+							(char) charAsNum4);
+		
+		System.out.println ("Printed as regular integer: " + 	******not casting it means that it becomes
+							charAsNum1 + " " + 						  65, 66, 67, 68 or something like that
+							charAsNum2 + " " + 						  b/c these numbers correspond to those
+							charAsNum3 + " " + 						  chars or something
+							charAsNum4);
+		
+		System.out.println("Characters: " + letter1 + " " + letter2 + " " + letter3);
+
+		//implicit cast
+		charAsNum1 = letter1;
+		//explicit cast is required with 
+		letter1 = (char) charAsNum1;
+		
+		System.exit(0);
+	}
+}
+
+
+// CharInput.java: entering a character using JOptionPane
+
+You can enter a string and the only output would be the char at the number
+which you ask for. Here its the char at 0, and the char at 1 but if you
+dont put more than 1 the program will crash because youre asking it to 
+get a char that doesnt exist
+
+import javax.swing.JOptionPane;
+public class CharInput
+{
+	public static void main(String[] args)
+	{
+		char c, c1;
+		String cAsString;
+		cAsString = JOptionPane.showInputDialog (null, "Enter a character");
+		c = cAsString.charAt(0);
+		c1 = cAsString.charAt(1);
+		
+		System.out.println ("You entered: " + c);
+
+		System.out.println ("You entered: " + (int) c);
+		
+		System.exit (0);
+	}
+}
+
+int charAsNum1, charAsNum2, charAsNum3;
+char letter1, letter2, letter3;
+
+letter1 = '0';
+letter2 = '1';
+letter3 = (char)(letter 2 + 1);
+
+int i = letter 3 - '0'
+
+system.out.println("i " + i);
+
+outputs 2
+
+Boolean_______________________________________________________
+ == means equal to
+ != means not equal to
+
+truth tables
+
+and operator = &&
+
+if a && b == true, true
+if a == false, b == true, false
+if a == true, b == false, false
+if a && b ==false, false
+
+or operator = ||
+if a || b == true, true 
+if a && b == false, false
+
+ ? operator = ^
+
+!(a) is logical opposite of a
+
+conditional vs unconditional boolean operators
+	*** dont really understand the difference
+
+(a==b)++(c++ ==d) 	if a equals b isnt true, it doesnt read c++ ==d
+(a==b) + (c++ ==d)	this allows c++ to be evaluated
+
+x += 1 means x = x + 1; and you can do this for *, - , /, %
+x ++ means x = x + 1 as well (post increment operator) use current value of x and increment by 1
+++ X (pre increment operator) increment x by 1 then use value of x in expression
+
+post increment means you print the value of x and then add 1 to it
+pre increment means you add 1 to the value of x and print it
+
+while loops________________________________________________________________
+contains 3 main elements
+	1) priming : introduce your starting variable
+	2) test condition: while something is happening
+	3) update: do this
+
+	**ctrl c stops infinite while loop**
+
+	RECITATION SEPTEMBER 21, 2016_____________________________________________________________
+
+	-While loops, booleans, if/else if/else blocks and switch statements
+		-When doing string comparisons in if statements, ALWAYS use .equals()
+
+	-LAB 3
+		-basic requirements
+		-Demo
+		-watch out for edge cases
+		-
+
+	boolean won = false; 
+
+	while (won == false);		or while (won != true && gaveUp == false)
+	{
+	`	scan a guess
+		nextChoice = input.next(); means you start as a string anyway
+			if (nextChoice.equals("x"));	*****************This is important********
+				Quitting already huh?
+				won = true;
+				or
+				gaveUp = true;
+	} else
+		int nextChoiceInt = Integer.parseInt(nextChoice);
+
+		if you make a string and set it to 'e', it wont be true
+
+
+	SWITCH STATEMENTS
+
+	scanner
+	system ""
+	string blah = input.next()
+
+	switch (colorcode)
+		case "r" : system print ("red")						with cases, you cant specify ranges 
+			break;											**REMEMBER BREAKS!
+		case "b" : system print ("blue")
+			break;
+		case "y" : system print ("yellow")
+			break;
+		YOU NEED A DEFAULT!!!
+		default : system print "does not compute or something"	**Default doesnt need break
+
+		For HW:
+
+		need while cause calc continues to run until you press c to clear or x to exit
+
+		while (!= c || != x);
+
+			take two numbers and do whatever
+			then enter another number and apply it to the first calculation
+			then enter something else if you want as long as you dont put c or x
+
+
+
+		also need to catch things like division by 0 and stop it but still keep buffer value
+		it can do integer math and also floating point math
+		user will never enter string
+
+		so extras are ERROR and UNKNOWN OPERATOR ___________(print out what operator they printed)
+
+
+		no integer arith this time, floating point arith so that when you put 10/3 you get 3.33
+
+
+		1st input
+		op
+		2nd input
+		ans
+		more input
+		ans
+		op
+		ans
+		op
+		more input 
+		ans
+		op
+
+		have all logic for all calculations within while loop (ideally)
+		decimal points should be more or less correct
+
+		scanner scans it comes in as a string but you can parse out an int or a char
+		go to java docs for questions about what to do with strings and stuff, this is really good for you!!
+		ie. look up string in java docs and find charAt to see what it does
+
+		******BIG HINT*********
+		promote everything to floats or doubles, so you can take in ints but promote it in your code
+
+		c sets answer to 0
+		x outputs thanks for using the calculator
+
+		Do this all in a while loop
+
+		DO NOT ASSUME THAT THE FIRST INPUT WILL BE VALID
+
+		2 + 2 / 4 x         java calculator >  inputs.txt
+
+		find out how to do manual cls to get the commands that you put in
+
+		----------------SEPTEMBER 27, 2016----------------------------------------------------
+
+		shift tab moves all stuff back
+		click and hold shift to highlight multiple lines at once
+
+		floating point numbers are only APPROXIMATIONS! 
+
+		dont test floating points for equality because they are only estimates and there is
+		a fat chance one floating point will not equal another
+
+		you can put in " " till ~ and print out all of the ascii table in between 
+
+		for (c = "", c = "~", c = 20)
+		i think people have trouble with for loops?? or one of the slides around that
+		oh, it was totally NESTED FOR LOOPS (slide 158-CPAC Fundamentals Short)
+
+		bad style for FOR LOOP
+		for (index = 1; index <= 10; index++)
+		{
+			System.out.print(index)
+			for ______ index = 100 because this works on the for outside from the top
+		}
+
+		------Modules
+		-Classes
+		-Methods
+
+		integer.parse you can do thing to parse an int from a string
+
+		Abstraction = you know what something does but you dont know how it does it
+		i.e. if you press "a" it pops up on the screen, you dont know details of how comp gets "a" there
+
+		result = Math.sqrt (100);
+		System.out.println(result);
+		System.out.println( Math.sqrt(121.00));
+
+		public static void main (String args[])
+		{
+			This is main
+		}
+
+		public static int square( int y)
+		{
+			This is method and the int y is a parameter;
+		}
+
+		if you put too many things on the stack, you get stack overload
+
+		1 or 0 return types in a method
+		ie: public static void printIntro (int n);
+		just prints out bunch of text to screen 
+
+		with cases, if you initialize string but don't put String blah = " " you can
+		set the default: blah = " "
+
+		once you are done executing a statement (like with return and break) you finish
+
+		if returning nothing use void
+		if accepting nothing use blank parameter
+
+		-----------------------September 28, 2016---------------------------------------
+		---------------------------RECITATION-------------------------------------------
+
+		Quiz October 5th on everything since September 27th (4 classes worth- up till for loops and methods) minimum 20 minutes for quiz, like 25 min
+
+		1 mult choice, 1 conceptual, variable types, logic, DO THE READINGS OMIGLOB!!!
+		To Prepare: look at labs youve done and try to do it with pen and paper 
+		ie print out even when even number or odd when odd number from 0-100
+
+		certain variables more expressive than others, know  which ones are more or less expressive and which ones are compatible or not...chars technically have int values so you can assign char A to an int.
+
+		programs we write have to be in java and not in pseudo-code
+
+		METHODS: In general, methods perform an operation and return a value. we get to define the series of operations in one place 
+
+		main is void
+
+		there are some methods that return, take in or sometimes "do nothing" 
+
+		to pass in someting from a method: ie printEvenOrOdd(i) in main and for the method
+		
+		public static void printEvenOrOdd (int iterator)
+			so you call i something else in method but have it still be an integer otherwise wont work
+
+		another example: make method a string
+				public static String printEvenOrOdd (int iterator)
+					if (iterator % 2 == 0)
+						return iterator + ": even"	
+
+		and in main:
+
+			for (int i = 15; i <= 257; i += 3) {
+				messageToPrint = printEvenOrOdd(i);
+				System.out.println(messageToPrint);
+			}
+
+
+
+-------------------------------------------October 4th, 2016------------------------------------
+
+
+scope of a parameter declaration: from where its declared until end of block its declared in 
+
+ByVal: parameter is passed but NOT CHANGED, make a copy of a value and send it to the main
+
+ByRef: parameter is passed but CHANGED, pass something by reference
+
+in java, everthing is passed by value
+
+you can have an array of ints, or chars etc but you cant mix types of arrays
+
+array variable ex: studentGrades[10]     	  
+declared as: studentGrades = new int[10];     student grids gets a new array of 10 integers
+
+new means allocate memory in the heap...new can be used for instances too
+
+holds a reference to memory aka a memory location  0 x 1234
+style with arrays: array[5]
+
+subscript = the position a number is stored in aka: 0 position or subscript 0 = the # in the first array
+
+ex: studentGrades[2] is the students grade at element subscript 2 (the 3rd value...0,1,2)
+
+string are objects, strings are stored in the heap
+
+the keyword "new"
+new is like a method, takes something you want to store in the heap as a parameter, 
+creates that thing and returns the memory address of the thing that it just created 
+
+When you declare an array, it initializes each position
+unlike how you have to put int i; before being able to say i = 5;
+
+myFirstArray [i] = (int)(Math.random() * 100) + 1;
+
+for (int i = 0; i <= myFirstArray.length - 1; i++)
+Arrays in java know their length, so if you dont...the .length - 1 thing is most excellent :)
+
+QUIZ REVIEW: WHAT ARE THE DIFFERENT TYPES OF ERRORS YOU CAN HAVE? RUN TIME ERROR, 
+
+public static int [] makeArray()
+takes in no parameters and gets an array...?
+
+-----------------------------------------------------------October 11, 2016---------------------------------------------------------------
+
+int[] list1 = {0,1,2,3,4,5};				in heap, not stack
+int[] list2 = {list1.length};				becomes garbage/unused when you do list2 = list1; 
+
+myCopyArray (list1, list2);
+
+list2 = list1;
+
+myCopyArray (int[] source, int[] destination)
+	for (int i = 0, i <= source.length - 1, i++)
+		destination[i] = source [i];
+	return;
+
+you can also do array copy...
+
+what does it mean to be a car? xpos, ypos, ignition, color = blueprint of car 
+you can take that blueprint to make an instance of that car, however many instances you want to make
+This is object oriented design!
+
+Object Oriented Programming- A class is the blueprint and we make instances of that blue print
+
+A class defines the blueprint
+when you take a java file and compile it, it becomes a class file
+only one class can be a public class 
+
+VERY IMPORTANT
+encapsulation - enables us to hide the implementation of a class to other classes (information hiding/abstraction)
+refers to process of combining elements to create a new entity
+
+class declaration includes members of the class - data member (AKA field- defines properties of entity) or method member (defines behavior of entity)
+
+datamembers can be primitive OR reference to another object
+arrays are reference variables
+
+object is an instance of a class
+if class is a blueprint, an object is one model created from that blueprint
+an object is identified by an object reference
+
+How to declare object references
+ClassName objectReferenceName;
+However, this does NOT create an object
+
+car c;					this creates variable
+c = new car(); 			this creates an instance                since we read right to left, we get a car in memory and then something gets 																	assigned to that car. The cars attributes get their default values
+
+To create an object: use new keyword along with a CONSTRUCTOR for the class of the object we want to create
+ClassName objectReferenceName = new ClassName();
+*the name of a constructor is the same as the name of the class
+
+in a class you can access members of the class normally
+ie: Class car{
+	boolean ignition = true;
+	ignition	
+	}
+outside of a class...
+	Class testCar{
+	car c = new car()
+	System.out.println("c.ignition");
+	}
+
+Outside the class, you need to use the special syntax
+refrencing variables: objectReferenceName.varName
+calling methods: objectReferenceName.methodName(parameters)
+
+when you have myCircle = new SimpleCircle();
+This means that new allocates memory for SimpleCircle method
+myCircle --> assign the memory location of the thing we just created to the heap
+
+
+SimpleCircle myCircle2;
+myCircle2 = new SimpleCircle();
+
+an instance of a class is in heap, instance vs method: one represents an action and the other represents
+
+CLASS = BLUEPRINT
+INSTANCE/OBJECT = what a class defines, what you MAKE with the class, you can make many instances/objects with your class
+METHOD = can take in parameters and return a tweaked thing based on the properties it took in for that object. Uses the properties of the object that was made by a class (parameters) and excecutes the method you made by taking in these parameters
+
+CAR HOMEWORK III
+user what car do you wanna use?
+car x
+carx.movehorizontally
+
+class Switch{
+	boolean state;
+	String getState ()
+	{
+		if (state)
+			return "On";
+		else
+	}		return "Off";
+	void toggle()
+	{
+		state = !(state);	
+	}
+}
+
+Use this test code for homework III as well!!
+
+Constructors are special methods that instantiate objects
+Its like its being passed to new function so that new function knows how to create it into the heap which it'll then be returned to
+
+GETTERS AND SETTERS
+
+public CircleWithAccessors(double r)
+{
+	radius = r;
+}
+public double getRadius()						gets a radius
+{
+	return radius;
+}
+public void setRadius(double newRadius)			sets a new radius
+{
+	if (newRadius > 0)
+		return newRadius
+	else
+}
+
+STATIC VARIABLES
+Class is blueprint and we make instance of a class. We can have a static variable (only one though!!!) and instance variables. For every circle we make we get a different radius
+
+you can access a static variable either with ClassName.varName or objectReference.varName
+USE ClassName.varName ie: car.xb because it is better style!!! :)
+
+Int.Parsing() ??
+
+MIDTERM PART I = OCTOBER 26th!!!!!!!!!!!!!!!!!!
+
+__________Recitation__________
+
+Git and GitHub!
+
+to call git in command line you can put: git status
+
+git init 					creates .git file
+git status					on branch master aka main branch 
+
+if you wanna make a file, simple.java
+
+git add filename.java
+git status
+
+1) make change
+2) add desired changes
+3) commit desired changesnewCar[carNumber]
+
+
+_____________________________________________________________________November 1, 2016_______________________________________________________________________
+Avg: 73% Max 96% Min 30%
+
+11/1	Big Oh/recursion
+11/8	array 2; interfaces; generics
+11/15	midterm part II (THIS IS DURING CLASS!) From Ch 11 up to last class(Oct 25): No Big Oh or recursion
+11/16	recitation
+11/22	stack
+11/23	SCHOOL CLOSED
+11/29	queues
+12/6	trees
+12/14	final 
+
+Abstract data types 
+stack: things that are in the stack plus the operations in the stack (push off the stack)
+queue: enqueuing means getting on the line, dequeuing means getting off the line
+dictionary: 
+
+Big O is the upper bound of running time or operation of operation or algorithm without regard to compiling time
+4n3 + 4n2 + 87n + 15 ---> This runs in n^3 time, get rid of constants
+
+~Linear Search Animation~
+Start off with a bunch of numbers all mixed up
+linear: as size of data doubles or triples, time it takes to search through it can double or triple
+if search is unsuccesful, you have to go through entire list
+This is O(n)
+Big O is worse case scenario...?
+on average, numbers average out to n/2 
+
+~Binary Search Animation~
+Start off with a bunch of numbers sorted by size
+If search is unsuccessful, you can stop after number bigger than number youre searching for
+Faster than linear
+Still O(n)
+Doesn't matter that it cuts out bunch of numbers, still linear, still growing in proportion
+
+
+Nodes
+Node n = new Node();	call constructor referencing n --> 0 --> null
+Node n2 = new Node(4); 								 n2 --> 4 --> null
+Node n3 = new Node(8,n2);							 n3 --> 8 ~~> 4
+
+Recursion is used to deal with factorial problems
+Rules of Recursion:
+	1) Make sure you can do the problem without recursion first
+	2) Make sure base is always heading towards recursion limit (else there will be worse than an infinite loop)
+
+you have to save the state of a certain method and then call it and then keep on doing it the entire time which 
+gets really expensive. BUT, recursion is useful with clarity of code (especially with trees)
+
+tail recursion = inefficient, when the methods get popped off and nothings happening
+
+___________Midterm Review & How to Study for NEXT MIDTERM (11/16)___________
+
+
+Questions: 
+What does this mean??? String.format("%x", 26) returns 1A;			"%x"
+
+aggregation: has-a (student has an address...but an address can be shared by many students)
+composition: has-a (student has a name...but a name is specific to one student)
+
+_________________________11/8/2016 Lecture__________________________________
+Recursion
+
+Time for Fibonacci Sequence program calculations:
+
+T(Fib(0)) = 1
+T(Fib(1)) = 1
+T(Fib(2)) = 1 + T(Fib(1)) + T(Fib(0)) = 3
+T(Fib(3)) = 1 + T(Fib(2)) (aka 3) + T(Fib(1)) (aka 1) = 5
+T(Fib(4)) = 1 + T(Fib(3)) (aka 5) + T(Fib(2)) (aka 3) = 9
+
+3 calls to method in total:
+one time you call the method + the total number of recursive calls when you call F(x) and F(y)
+
+How many calls to Fib x are you making when you call Fib y?
+C(Fib(1)) = 1 
+C(Fib(2)) = 1
+C(Fib(3)) = C(Fib(2)) + C(Fib(1)) = 1 + 1 = 2
+C(Fib(4)) = C(Fib(3)) + C(Fib(2)) = 2 + 1 = 3  
+
+With the Fibonacci program, you can instantiate an array with fibonacci sequence numbers and 
+the program will start with fibonacci(n-1) first and find the values for all the fibs and doesn't
+even have to look at (n-2)
+
+Nodes
+Program w header, one, two, three etc.
+
+header
+one ------1
+two ---------92
+three ----------356
+four ----------------44
+five --------------------5
+
+when header gets 1, all other nodes are nullified
+
+Stack: 	____________
+		|_null______printlist(null)
+		|_0x5555____printlist(0x5555)	--->5
+		|_0x4444____printlist(0x4444)	--->44
+		|_0x3333____printlist(0x3333)   --->356
+		|_0x2222____printlist(0x2222)	--->92		
+		|_0x1111____printlist(0x1111)	---> 1
+		|_0x1111____header main
+
+Two-Dimensional Arrays (Chapter 8)
+"I want an array of arrays"
+
+Syntax:
+int[][] matrix = new int [10][10] 	
+10 rows and 10 columns... 10 integer arrays and each of those integer arrays will have length 10
+
+int [][] array = {
+	{1, 2, 3},
+	{4, 5, 6},
+	{7. 8. 9},
+	{10, 11, 12}	
+};
+
+Ragged Arrays, you can have arrays of different sizes going down
+
+{1, 2, 3, 4, 5}
+{1, 2, 3, 4}
+{1, 2, 3}
+{1, 2}
+{1}
+
+matrix.length[0] = 5 (5 values in array 0)
+matrix.length[1] = 4
+matrix.length[2] = 3
+matrix.length[3] = 2
+matrix.length[4] = 1 (1 value in array 4)
+
+Review:
+if you write a class to extend an abstract class, what must you do? You can either override it or the class can have an 
+abstract class too and it would be empty
+
+Interfaces
+interfaces can only contain abstract methods and static constants
+
+Syntax:
+modified interface interfaceID {
+	//constants/method signatures
+}
+
+Comparable solves binary search problem
+
+talked about strings and compareTo and stuff, talked about generics
+
+MIDTERM II: covers up to inheritance and polymorphism
+
+_____________________________________________RECITATION/LECTURE 11/16/2016__________________________________________________
+
+Exception Handling
+
+Exception catches all general problems
+you can catch more specific exceptions that give you more details if you specifically try to catch a certain problem
+
+If the stack is not full
+	you can increase the top of the stack by 1 
+	and then set that stack index to the element
+Else
+	you throw a new StackOverflowException("Whatever message you want to print...Push attempted on a full stack");
+
+Stack : last in first out (iPhone home screen w messages...the last message is displayed over older ones)
+Queue: first in first out
+
+Arrays are better for queues because you know how many values are in a queue and 
+you can also use % to move around queues without going out of bounds
+
+public class ArrayStack<Car> car_stack = new ArrayStack<Car>();
+	protected Car[] stack
+
+	public ArrayStack() {
+		stack = (Car[]) new Object[DEFCAP];
+	}
+
+public class ArrayStack<T> implements BoundedStackInterface<T>
+	protected T[] stack;	//holds stack elements...T is any type
+
+public class List<T implements Comparable<T>>
+
+
+No default
+T cannot be an abstract class
+you have to implement compareto
+2 things required: push method that accepts T and says if the stack is full
+	and boolean isFull method
+practice making link lists with data element of T and stuff...
+List vs ArrayList , you can access specific node in ArrayList but
+there is no indexOf function in List, you can only index first and last node
+
+your object doesnt have to implement anything to be an ArrayList
+generics take objects
+there are uppercase objects for booleans, you can create a wrapper for char
+
+<T> is a generic...a type
+
+________________LECTURE NOVEMBER 22,2016___________________________________
+
+DATA STRUCTURES
+
+going over exceptions...read about exception handling (ch12)
+nodes and linked nodes...read about this
+Lists...read about this 
+recursion...and Big O (linear and binary)
+
+checked/unchecked exceptions
+
+Unchecked Exceptions:
+runtime exceptions - are a subclass of exceptions, these are unchecked exceptions
+ERROR
+and their subclasses
+
+Checked Exception:
+all other exceptions
+compiler forces user to catch these exceptions
+
+remember program abstraction: i know what something does i dont know how it does it
+
+REVIEW the Stack:
+
+Stack Interface 
+void pop() throws StackUnderflowException
+T top() 
+
+when you push something, it inforces that something is a ___certain type____
+
+BoundedStateInterface extends StackInterface
+bounded means theres a given number of items you can push into the stack
+unbounded means there is no limit to what you can put in the stack
+
+In Stack Interface
+pop() throws StackUnderflowException b/c there might be nothing to pop off the stack 
+	pop takes something off the stack...if empty, StackOverflow
+top() throws StackUnderflowException b/c there might be no top
+	top
+isEmpty() is necessary to check if the stack is empty
+
+BoundedStackInterface 
+pushT() throws StackOverflow b/c the stack might be full
+	push something onto the stack
+isFull() is necessary to check if the stack is full and cant take anymore input
+
+
+data structures are more versitile? you can access values at different spots wheras stack is rigid and deals only
+	with the last value in (the top of the stack)
+Def of stack: you can only interact with the top of the stack..you can either push something onto the stack
+	or pop something off of the stack
+
+can only hold an LL node that holds the same type
+
+info<T>  link
+    	|
+	    |
+		|
+		 LLNode<T>
+
+Building a stack with linked nodes
+In example: LinkedStack<T> implements UnboundedStackInterface
+-unbounded 
+-push doesnt have to check..?
+
+
+Queues: first in, first out
+
+enqueue: enqueuing is adding someone to the rear
+	index someone into the next free position there is, after who ever was in front of you
+	ex: someone is enqueued into a defined front position (1) and people keep getting 
+	enqueued into position 2..3..4..and 0 if the array is wrapped
+dequeue: person in front of queue comes up to front of the queue
+	take the first person off the line, leave everyone where they 
+	are and define the front as the person at the new front
+Keep track of front and back of queue
+....if you wrap an array, you can fill the empty back at position (0)
+
+front = 1				circle of array[5] where the front of the queue is position (1)
+back = 2..3..4..5..0
+# elements: 1..2..3..4..5
+
+
+Big O
+-constant if doing 1 thing at a time
+-n if in a loop 
+
+Definition of Big O is the worst case scenario..n operations are bad
+
+Link List queuing
+Theres a reference to the front so its different then the arrays (where we made whatever the front)
+
+Big O of enqueue is 1 and Big O of dequeue is 1
+
+Next lecture: trees, link lists, binary trees
+
+________________________________Lecture 11/29/16____________________________________________________
+*trees not on final
+-Dec 14 (Wednesday) 7:10-9:00
+-No class Dec 13th
+-traverse data structures
+
+List Interfaces
+List Data Structures...or whatever
+
+	public void add(T element)
+	//adds element to this list
+	if full, enlarge size of array
+	
+	big O of add is whatever enlarge(); would be...its add
+	its linear once in a while...
+
+find is an internal method that isnt private, its protected and we want subclasses to have access to it
+
+found stays false until whatever position is equal to target
+going through each element gives you a Big O of n (n number of elements)
+	this is true if there are for loops or any loops involved
+	this is called linear
+If youre just grabbing an element and replacing current position its a constant Big O
+	usually an O of 1
+
+By making sure element is added to list in order, you dont have to spend time sorting it in the end
+
+In list sorting example, if an element (ex: 2) is less than the first element (ex:3), the programs for loop
+moves each element down by setting element at index to the value at index-1 (the element prior)
+
+
+List Node example LLNode
+	create new node and call it info
+	you have getter and setter for it
+
+numElements: 0			   1
+currentPos --> null
+list -->			[2]] new node
+previous --> null
+location --> null
+found = false
+
+
+create another new node [3]]
+list gets new node
+num elements = 2
+
+create new node [10]] --> null
+setlink list is pointing to previous node [3]]
+setlink list = the new node [10]]
+the number of elements increases 1
+
+l.add(2)
+l.add(3)
+l.add(10)
+l.add(14)
+
+At the end of this, the list will be like this:
+list --> [14]]--> [10]]--> [3]]--> [2]]--> null
+
+The Big O of this operation is constant
+Its really important to separate interface from user so user never sets list to null and deletes all linked list
+
+public boolean remove (T element) //example of removal from nodes in the middle
+
+To add Node
+make a new node with [3]]-->null
+set pointer to the list [3]]-->[10]]
+list points to new node [3]]
+number of elements ++
+
+To remove Node
+find element 2
+	while location isnt null...
+	previous gets location [3]]
+	location = list so [3]]
+
+	then previous gets location [10]]
+	location = list so [10]]
+
+	then previous gets location [2]]
+	since list = location
+	then return true
+
+if 2 is found
+	previous set length is now null
+	list = list.getLink(); removes the first node
+	number of elements is decreased 1
+
+This is a Big O of n because find will have to go through all the nodes
+
+Heaps-doesnt matter what order you put stuff in, it comes out in priority
+
+some value can be max heap or min heap- when you say dequeue, the thing that comes out is max heap...or min heap..?
+smaller value higher priority or higher value higher priority
+to do this you can use a linked list, either unsorted or sorted
+unsorted
+placement is 1
+deletion is O n
+
+sorted 
+placement is O n
+deletion is 1
+
+percolate down means move nodes up by swaping with parent node
+Big O of this operation is log n
+if you can go left or right, you rule out half the tree
+the depth/height of the tree is log n
+
+_____________________Recitation 11/30_________________________________________
+introduction to OP was encapsulation
+advances object oriented territory...
+Systems of objects, their behaviors and relationships
+in form of inheritance, different categories within
+hierarchy from abstract class
+generics and power generics give us w objects like if we wanna create a collection of something: numbers, strings, objects
+generics (e...?)
+How we can code something up so that it works for any objects (<T> ??)
+generics and interfaces are connected or can be connected: comparing 2 collections like an abstract list, how would you 
+compare one list to another
+Object implements comparable
+there will be a method called compareTo and this is what comparable demands that you implement
+the objects that are being compared must be of the same type
+
+Lists, Stacks, Queues
+different ways of expressing those
+abstract data structures - (stack or queue) allows you to pop or push 
+if we use an array or a linked list for a data structure, its no longer abstract 
+with queues you have enqueue and dequeue
+adding to stacks and to queues or removing from are differences
+
+generic is something that takes shape at run time - it is used to accomodate many different types of objects
+arrayLists
+
+Assignment 10_______________________________________Assignment 10___________________________________________Assignment 10
+postfix = operator for expression comes after operand
+takes in 3 + 5			infix
+converts it to 3 5 + 	postfix
+calculates 3 5 +
+
+**Data Structures Textbook for examples
+
+Calculator class 
+	Console is like the menu 
+	will NOT do the conversion...this is for the converter class
+	CAN instantiate a converter object but will not do any converting itself
+
+Converter class
+	will take long string (input from user)
+	provided is parser that will tokenize a string (breaks string up into significant pieces)
+
+Will work with exceptions - they dont need to be that complicated, will extend from runtime exception
+probs stackOverflow and stackUnderflow online
+
+Ie: push will throw an overflow exception
+
+Responsible for:
+Make a postfix calc class
+postfix converter class
+stackoverflow exception class
+stackunderflow exception class
+implementation of a stack (can use one provided from textbook or design it yourself, doesnt need to be very involved or super efficient)
+	However, cannot use ArrayList for this!!
+
+3 + 5 --> 3 5 +
+_______________
+
+Stack 			Result
+start with 3...is it an operator? No
+null 			3
+
++...is it an operator? Yes
+Since stack is null, it automatically has lower precedence
+Precedence....PEMDAS  ^ , * /, + -		parenthesis are their own category for this...
++				3
+
+5...is it an operator? No
++				3 5
+
+We are out of operands but stack isnt empty..so need to pop whats on stack
+null 			3 5 +
+
+
+*input checkings not required, except for with stackoverflow or underflow
+*underflow is if youre trying to pop something off the stack and its empty
+*catch exception for divide by 0....so call that exception 
+
+
+if operator 
+	(steps 2-4)
+else 
+	(step 1)
+
+Stack will ONLY take operators and parenthesis
+
+HOW TO DO THIS LAB
+
+(4 + (6 * 3)) / 2 -----------> 4 6 3 * + 2 /
+
+	Stack 				Result String
+1.  Step 3.....
+	(
+2.  4 is not an operator
+	( 					4
+3.  + operator...precedence over (....open ( has almost no precedence 
+	( +					4
+4.  ( always goes on stack
+	( + (				4
+5.  6 goes on string
+	( + (				4 6
+6.  * operator compared to rightmost (, goes next to it
+	( + ( *				4 6 
+7.  3 is not operator so goes on string
+	( + ( *				4 6 3
+8.  )...follow step 4!!! And you dont have to put parenthesis in the output!!!!!!! 
+	outermost ( doesnt have a mathcing parenthesis yet
+	pop * off and put it on end of string.... you keep popping off stack till you find first open paren
+	( +					4 6 3 * 
+9.  another closed paren...pop everything off until you find closed paren
+	null 				4 3 6 * + 
+10. / is an operator
+	/					4 6 3 * +
+11. 2 is an operand
+	null 				4 6 3 * + 2 /
+
+You should end up with an empty stack at the end and a proper string! 
+
+
+Input an expression or enter q to quit
+	Input
+Print out postfix
+Print out calculator result
+
+Reset loop: Input an expression or enter q to quit
+
+
+
+it should be able to take in both infix and postfix and print out the right thing
+
+you can make an ArrayStack that can be bounded
+
+stackoverflow and stackunderflow has to extend runtime 
+treat all as strings and when you calculate, you can use double
+
+continue or enter Q to quit....so it does loop....*****
+
+unbalanced equations....should raise an error when youre trying to create the postfix..handled in the converter
+should just go back to main menu
+isvalid infix isnt required
+youll find out something is weird if postfix isnt successful
+
+dont worry about arithmetic errors
+just worry about catching stack overflows and stackunderflows
+
+if exception is thrown, tell person to input something else
+
+____________________________Lecture_____________________________
+Tree is collection of nodes: N is the root and N-1 are the edges
+its N-1 because every node has only 1 incoming edge besides the root 
+every node except for root has 1 parent
+leaves are nodes w no children
+a path from one node to another is the path of nodes you have to cross/edges you have to pass
+depth of node is the length of the root to a node
+the height is the length of the longest path from a node to a leaf
+	all leaves have a height of 0
+	the height of the root is equal to the depth of the tree
+
+binary tree: cannot have more than 2 children
+	each node has an element, a reference to a left child and a ref to a right child
+tree traversals: 6 ways to do it
+	trees naturally recursive
+	-root, L, R 	or root, R, L 		preorder traversal
+	-L, root, R 	or R, root, L 		inorder	traversal
+	-L, R, root 	or R, L, root  		postorder traversal
+
+		5
+	10		17
+  4    13	 2
+N  N  N  N  N  N
+
+  N means null
+
+  	   A
+	 B	 C
+    D E	F G
+
+In Preorder, root is visited FIRST -O (flag the left of nodes)
+recursion happens twice
+Big O is n because you have to visit every node no matter what
+public void preorderPrint(BinaryTree bt)
+{
+1	if (bt == null) return; 	//if you get past a leaf you stop
+2	System.out.println(bt.value);	
+3	preorderPrint(bt.leftChild);
+4	preorderPrint(bt.rightChild);
+}
+5, 10, 4, 13, 17, 2
+A B D E C F G 
+
+Inorder traversal: root is visited in the middle! O (flag bottom between nodes)
+public void inorderPrint(BinaryTree bt) 
+{
+1	if (bt == null) return; 	//if you get past a leaf you stop
+3	inorderPrint(bt.leftChild);
+2	System.out.println(bt.value);	
+4	inorderPrint(bt.rightChild);
+}
+4, 10, 13, 5, 2, 17
+
+Postorder traversal: the root is visited LAST! O- (flag the right of nodes)
+public void postorderPrint(BinaryTree bt) 
+{
+1	if (bt == null) return; 	//if you get past a leaf you stop
+2	postorderPrint(bt.leftChild);
+3	postorderPrint(bt.rightChild);
+4	System.out.println(bt.value);	
+}
+4, 13, 10, 2, 17, 5
+ABDDDBABEEEBACFFFCA
+
+Arithmetic Expression Tree
+binary tree! the internal nodes will be operators
+
+((2 x (5 - 1)) + (3 x 2))
+This does preorder,inorder and postorder
+
+	if (t.left != null)		//for preorder...prints ( if the node is an operator
+		print "("
+		printTree (t.left)
+	print(t.element)		//prints root
+	if (t.right != null)	//for postorder...prints ) if the node is an operator
+		printTree (t.right)
+		print "("
+
+evaluate using postfix
+		    +		
+		x 	    x
+	  2   -	   3 2
+	     5 1
+
+2 5 1 - x 3 2 x +
+to calc: 2 4 x 6 +
+		 8 6 +
+		 12
+	
+	    +		
+	x 	    +
+  3   4	    5
+
+prefix   + * 3 4 5 
+infix	 ((3 * 4) + 5)
+postfix  3 4 * 5 +
+evaluate 17
+
+( are only for internal nodes which end up being operators - preorder
+) are only for internal nodes which end up being operators - postorder
+
+Deletions
+1. if you wanna delete the root, it either goes to the rightmost leaf of the left child (largest value less than root)
+   or the leftmost leaf of the right child (smallest value greater than root)
+2. recursively delete the node which needs to be removed
+
+_____________________________________FINAL____________________________________________________________________________________________________
+______________________________________________________________________________________________________________________________________________
+1. How would you implement a queue? Can you write a simple implementation for a generic 
+queue? Focus on the enqueue() and dequeue() methods.
+
+you can use an array or a linked list, ones inherently bounded, one isnt, with enqueuing you have
+to check if its full and dequeues you have to check if its empty, should raise exceptions on both
+cases
+
+2. How would you compare two linked lists? Write a method that would do the following:
+-return -1 if the first linked list is "less than" the second 
+-return 0 if the lists are equal
+-return 1 if the first linked list is "more than" the second
+
+1 --> 2 --> 3 --> null
+head 		  --> 4 --> null (just added a node to the tail...4 is now the tail)
+in dequeuing, you get value of head, return that value(head.next) 
+because nothing is pointing to node w 1 (old tail), it will get put in garbage collection
+if dequeued until last node, head = tail
+if you dequeue last node, head = tail = null
+
+compareTo
+compared to ASCII code values:
+abcd --> is greater because d = 4 and b = 2
+abcb
+
+compared to length
+z
+ab --> larger because shorter sequence is always smaller than longer sequence, no matter what its value is
+
+move through linked list by going on as long as node isnt null
+
+3. What is the (asymptotic) running time of the following:
+-finding an element in a linked list
+O(n) cause you have to iterate through entire list
+O(n) running time is growth of operations in time could grow to a function
+
+-adding an element to a linked list
+constant, 1, enqueue operation
+
+-deleting an element from a linked list
+constant, 1, dequeueing, as long as you keep track of the tail...otherwise it would be O(n)
+so make sure you maintain a pointer to the tail!
+
+its actually O(n)....because even if you had that tail pointer, where would your tail then go? youd still have to 
+go through all of them..
+however, if the nodes were matched up to an array, it can be O(1) cause you know exactly where the tail is
+
+-inserting an element at a given index
+
+Note: your answers might depend on your implementation
+
+Explain how binary search works (give rough pseudocode for the algorithm) and why its better than a linear search.
+Could we used binary search with a linked list? If so, how? If not, why not?
+Keeps cutting sorted list in half until value that is being looked for is found, if it doesnt exist in the list, 
+the binary search figures it out
+keep track of starting index, middle and end index. Calculate this by start + end  / 2
+Start - end
+Start - middle (new end)
+start - middle of middle (new end)
+when start = finish, then the binary seach ends, the item is not found
+
+Binary search only works properly on a sorted list
+O(log n) cause youre dividing in half each time
+8/2 = 4 	8 = 2^3
+4/2 = 2		4 = 2^2
+2/2 = 1		2 = 2^1
+			1 = 2^0
+
+doing this with linked list would be more difficult, still possible, really have to know head and tail 
+
+Assume you have a linked list. Write a method that reverses the linked list, given only the head of the list as a parameter.
+(Hint: there is more than one way to do this)
+
+Use this as you definition of a linked list node
+
+
+you want the program to go from this: 1 --> 2 --> 3 --> null
+								  to: null <-- 1 <-- 2 <-- 3
+
+
+class Node {
+	int value;
+	Node next;
+
+	public Node(int value) {
+		this.value = value;
+		next = null;
+	}
+}
+
+return type should be of type Node
+you have a variable called newHead = reverse (old head)
+
+recursion is going to be involved
+base case is when node = null
+
+public static Node reverse(Node prev, Node cur) {
+	if (cur.next == null) {
+		cur.next = prev;
+		return cur;
+	}
+	else {
+		Node = newHead = reverse(cur, cur.next)
+		cur.next = prev
+		return newHead
+	}
+}
+
+youd need previous, current and next
+
+public static Node reversLL(Node head) {
+	Node newHead = reverse(null, head)
+	return newHead
+}
+
+___________________________________________
+in array implementation, just keep track of front, rear, how many elements you have etc.
+
+
+intro to OOP encapsulation
+stacks and queues: still a little bit of encapsulation
+how can we manipulate these discrete bodies, especially how we manipulate and search through the data
+
+know how to implement different methods on different data structures
+know what data structure would be best to model a certain problem 
+
+moving through a film reel, how would you rewind? use a stack cause last frame in is first one out
+store them and then push them back
+
+know big O notation
+
+know recursion....not just tail (where you have f(n) that returns f(n-1) cause otherwise you dont make any forward progress)
+
+recursion: how would you compute the sum of an array recursively? without a while loop
+base case: where do you stop doing the recursion?
+you can have an if statement that breaks out once it reaches the base case
+
+recursive_sum(array, start)
+	if start == array.length-1		//if start 0 == 
+		return array[start]
+	else 
+		current = start
+		start = start + 1
+		return array[current] + rec_sum(array, start)
+
+
+| 2 | -1 | 10 | 3 | 4 | 5 |
+  0    1    2   3   4   5
+
+
+converter class should return something the calc class should use
+parserHelper- for when you first start off....? you can use it to tokenize the infix expression
+to get the postfix from infix but THEN use the scanner on the postfix expression
+
+string tokenizer, just use scanner
+
+scanner goes thorugh postfix...postfix is only composed of operands, operators and spaces and scanner 
+knows to skip spaces
+____________________________________________________________MIDTERM_REVIEW________________________________________________
+__________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________
+CHAPTER STUDYING:
+CH 11
+-polymorphism is where a variable of a supertype (GeometricObject) can refer to a subtype object (CircleAsGeometricObject)
+-*****************an instance of a subclass is always an instance of its superclass*************
+******************always possible to cast an instance of subclass to a variable of superclass*********
+-signatures of methods: nameMethod (type params)
+-declared type vs actual type.... Object o = new GeometricObject; DeclaredType o = new ActualType;
+-dynamic binding: during compile time, the compiler goes from subclass to superclass looking for the method that was called and
+	implements the first method that matches
+	-The Java Virtual Machine is responsible for binding the correct method to the method call at run time
+	
+	*******When invoking an instance method from a reference variable, the actual type of the
+	variable decides which implementation of the method is used at runtime. This is known
+	as dynamic binding.********
+
+-method matching is when declared type of reference variable decides which method to match at compile time according to 
+	param types, number of params and order of params
+-method binding is when JVM dynamically binds implementation of method at runtime, decided by actual type of variable
+- int[] is not part of Object[], it is a primitive type. However, String[], Integer[], Double[] are part of Object[]
+-polymorphism when objects of different classes can have different forms
+reference of Bank class is pointing to object of Bank_ABC class
+
+EXCELLENT DEFINITION OF POLYMORPHISM: If a method’s parameter type is a superclass (e.g., Object), you may pass an object
+to this method of any of the parameter’s subclasses (e.g., Circle or String). This is known as polymorphism.
+"a class having many forms, being both superclass and subclass in chain of inherited classes"
+
+RULES FOR OVERRIDING METHODS:
+1) only non-private methods can be overridden because private methods are not visible in subclasses
+1.5) you cannot override final method, final class cannot be parent
+2) you cannot override static methods
+3) you cannot override data field
+4) In these two cases, if you're trying to override them, you're actually hiding them
+
+Keyword "super"
+Used to
+1) Invoke superclass constructor from subclass
+	-must be first in subclass constructor
+	-syntax: 
+		super(); or super(params);
+2) To call superclass methods from subclass
+	-only necessary when you override a method. Otherwise, you won't be able to call overriden method
+	-syntax: 
+		super.superClassMethodName(); or super.superClassMethodName(params);
+
+CONSTRUCTORS ARE NOT INHERITED!!!
+	Instead, subclass constructors DEFAULT call superclass no params constructor before it even reads the rest of its constructor code, therefore if you want to call a superclasses constructor with params, you use the super keyword
+	(super(params) has to be first in subclass constructor cause it must be executed first)
+AND
+	if the superclass has no zero params constructor, the subclass MUST explicitly invoke the superclass constructor w params
+
+Indirect inheritance: When theres a really long line of superclasses up to the base class and the current class has inherited the members of all superclasses above your class
+
+Composition = "has-a" relationship		ie: car has-a wheel and has-a gas pedal = composition relationship
+										DessertItem[] object in Checkout Object...having an object as a data field in another object, linked but without an is-a relationship
+Inheritance = "is-a" relationship		ie: car is-a vehicle = inheritance relationship
+
+"this." = pointer to the called object
+	-refers to the currently running instance of the object you're using / instance of the class that is being used
+	-you can access a data field by using this. in a method, otherwise the variable you use (if it has the same name as the 
+	data field) is just hiding the field
+	-this() can be used in a constructor to invoke another constructor but must be the first line...good for overloading THIS IS CALLED 
+		CONSTRUCTOR CHAINING, params have to match params from first constructor. 
+		EX: public A() {
+				System.out.print("Hey");
+			}
+			public A(int x) {
+				this();
+				System.out.print("Whats going...");
+			}
+			public A(int x, boolean b) {
+				this(int x);
+				System.out.print("on?");
+			}
+
+ANOTHER RULE FOR SUB/SUPER CLASS INHERITANCE
+
+You can't call a method from a subclass using a superclass reference if the method isn't inherited from the superclass
+ 	ie: Object o = new Circle(6);
+		o.getArea()
+	causes a compiles error cause getArea() isn't a method in Object class
+
+RULES FOR ABSTRACT CLASS
+-abstract methods have to be in abstract class 
+	Syntax: public abstract class ClassName
+			public abstract type methodName();
+-subclass has to override all abstract methods from superclass, otherwise it has to be an abstract class
+-a subclass can be abstract even if its superclass is concrete (ie: DessertItem is subclass of Object but is an abstract class)
+-you can't create an instance of an abstract class using "new" operator but it can be used as a data type (ie: like int and double etc)
+	(DessertItem[] dessertArray = new DessertItem[100] is 100% correct :D)
+
+RULES IN CLEARER FORM FOR ABSTRACT CLASSES
+1. Abstract classes are like regular classes with data and methods, but you cannot create instances of abstract classes using the new operator.
+2. An abstract method cannot be contained in a nonabstract class. If a subclass of an abstract superclass does not implement all the inherited abstract methods of the superclass, the subclass must be defined as abstract.
+3. A class that contains abstract methods must be abstract. However, it is possible to define an abstract class that doesn’t contain any abstract methods.
+4. A subclass can be abstract even if its superclass is concrete.
+
+Casting Object: being able to cast an object reference as another object reference
+
+DessertItem newDessert = new Candy;			This is implicit casting
+	OR
+Candy reeses = (Candy)newDessert			This is explicit casting
+
+For explicit casting to work, you need to make sure that the object getting cast is an instance of the subclass...
+so you can use keyword "instanceof"! 
+Example:
+		Object myObject = new Circle();
+		... // Some lines of code
+		/** Perform casting if myObject is an instance of Circle */
+		if (myObject instanceof Circle) {
+			System.out.println("The circle diameter is " + ((Circle)myObject).getDiameter());
+		}
+Casting is necessary cause some superclasses don't have methods that a subclass has and if a superclass object is an instance of a subclass, you can cast the superclass object as the subclass so that it can use the subclasses methods. You want to use the ultimate superclass
+as a reference for the subclass object because its good programming skills (generic programming) and that way you can make methods that take in an object (the most general) and your program wont be so specific that it doesnt work properly.
+
+Pg 429
+Casting can be done only when the source object is an instance of the target class. The program uses the instanceof operator to ensure that the source object is an instance of the target class before performing a casting
+	ie: Object object1 = new CircleFromSimpleGeometricObject(1);  takes in 1 cause its calling constructor of this class that has an int param 
+
+How to cast an object before calling a method...	((Circle)objectRef).method();
+
+RULES FOR CASTING:
+Implicit casting goes from GENERAL ref = new SPECIFIC
+	***Instance of specific is always instance of general***
+Explicit casting goes from SPECIFIC ref = new SPECIFIC
+					  then ref = (SPECIFIC)GENERAL
+
+						OR GENERAL genRef = new SPECIFIC
+					  then SPECIFIC specRef = (SPECIFIC)genRef
+
+Equals Method: tests whether objects contain same contents
+== : tests whether two objects have the same references 
+Syntax: object1.equals(object2);
+Signature: public boolean equals(Object o)		**ALWAYS Object o, not Circle o or whatever, has to be Object being passed in
+
+ArrayList: an object that can be used to store a list of objects
+
+"protected" visibility/accessibility modifier allows subclasses to access fields and methods from a superclass
+  Visibility Increases (becomes stronger)
+	------------------------------->
+	private, none, protected, public
+
+private - accessed within class
+default - acessed within class and within package
+protected - accesssed within class/within package and by subclasses(even if in different package)
+public	- all access
+
+
+accessibility modifiers private and protected can only be used for members of the class (ie: data fields and methods)
+subclasses can override methods and make their accessibility stronger (protected to public) but cannot make visibility weaker (public to protected or private..or default)
+keyword "final" means you cant extend a class (cant be a parent class), cant override a final method in subclasses when used in method signature and when used inside a method for local variables, means variable is a constant
+Example:
+As Class: public final class Dog 	As Method: public final void printState()
+ 
+__________________________Language_____________________________________
+abstraction: is that a user can use your class without knowing how it does its job
+encapsulation: "data hiding" and using visibility modifiers such as private and getters and setters to access those variables so that user doesnt actually modify the class. Encapsulation restricts changes to the class.
+keyword new = creates an object then calls class constructor
+constructor: used to construct an instance of a class. It initializes an object (aka puts together info needed for new object)
+initialize = assignment of a value to a variable at time of declaration 
+declare = say what type a variable is/ associate a variable name with an object type
+assignment = storing a value to a variable
+invoke = use
+instantiate = create
+MT II : OOP from 3-6 COMPLETED
+Up to 427 Casting and instanceof
+
+WHEN YOU GET THE MIDTERM BACK:
+
+For question about Animal abstract class
+
+public class Lion
+
+public String toString(){
+	return "rawr";
+}
+
+To instantiate the Animal array:
+Animal[] animals = new Animal[100];
+for (int i = 0; i < animals.length; i++){
+	animals[i] = super.toString();				????
+	or would it be...
+	animals[i].toString();
+}
+
+This way you dont have to check if the Animal in array object is ofinstance, cause they all share the toString class
+BUT I think i made a sound method in my abstract Animal class.... so that could work too
+I think I instantiated the array by doing
+animals[i] = Animal.getSound(); which is how you instantiate a static method. Oops.
+
+also fucked up Scanner: has to be char character = input.next().charAt(0);
+
+_____________________________________________________________________________________________________________________________________________
+__________________________________________________________FINAL_REVIEW_______________________________________________________________________
+_____________________________________________________________________________________________________________________________________________
+FINAL: Wednesday 14 @ 7:10-9:10
+
+-java API arraylists NOT INCLUDED
+
+ to review:
+  pointers for nodes
+  inheritance
+  interfaces
+  abstract classes
+  generics
+  -lists ADS
+  -queues 
+  -stacks
+  -linkedlists
+  all implementations of those
+
+Liang
+[X] CH 12 Exception Handling
+[X] CH 13 Abstract Classes (look up more on interfaces...what are they?! and go over syntax of both abstract and interface)
+[ ] CH 18 Recursion
+[ ] CH 19 Generics
+[X] CH 20 Lists, Stacks, Queues and Priority Queues
+[ ] CH 24 Implementing Lists, Stacks, Queues, PQueues
+
+Dale
+[ ] CH3 Lists and Stacks
+
+For Fun
+Ch 15 programming and animation
+
+________________________ADVICE__________________________________
+not much exception handling, maybe just where youd put code
+maybe might ask about exceptions versus if/else
+
+definitely focus on writting things out by hand
+basic arrays
+nested for loops
+
+practice drawing with linked lists and such 
+
+linked list is prefered for this rather than array, its "easier"
+thats because there are no bounds
+
+ADT: queue, stack 
+implementation: array, linked lists, array lists
+________________________________________________________________
+
+Big O________________________________________________________________________________
+Examines by growth rates to know how long it Could take to find something in a search
+time complexity and space complexity important in determining good data structures
+want a system to be machine and compiler independent
+Time complexity: think about how many instructions will be excecuted by a system
+defines the upper bound of the running time of an operation or algorithm without regard to constants or machine / compiler factors.
+
+Asymptotic analysis: based on the idea that as the problem size grows, the complexity can be described as a simple proportionality to some known function. This idea is incorporated in the "Big Oh" notation for asymptotic performance. 
+
+You ignore non-dominating parts because when size is really large, these parts are negligible
+
+Big O's we've dealt with:
+O(1): constant....if time is not related to input size...i.e. a method that retrieves an element at a given index in an array
+O(n): linear (if there are loops involved)
+
+nested for loops are often quadratic...n^2
+
+ADT________________________
+Abstract Data Types such as
+-Stacks
+-Queues
+-Dictionary
+-Trees
+-Priority Queue
+***LISTS ARE ABSTRACT DATA STRUCTURES!
+
+A data structure- an object that stores other objects, refered to as data or elements
+you can declare protected data fields in abstract classes
+
+-The Collection interface defines the common operations for lists, vectors, stacks, queues, priority queues, and sets.
+-A container supported by Java is one for storing a collection of elements- this is simply called a collection.
+
+Concrete classes: ArrayLists, Stacks, LinkedList, Priority Queues
+Abstract classes: AbstractList, AbstractQueue
+Interfaces: Set, List, Queue
+Collection- ultimate interface
+
+
+Stacks______________________________________
+store objects in a last-in first-out fashion
+
+Queues_______________________________________
+store objects in a first-in first-out fashion
+Priority Queues process objects in order of priorities
+
+Lists_________________________________________________________________________________________________
+The List interface extends the Collection interface and defines a collection for storing elements 
+in a sequential order. To create a list, use one of its two concrete classes: ArrayList or LinkedList.
+
+ArrayList is a resizable-array implementation of the List interface. All the methods in ArrayList are 
+defined in List. LinkedList is a linked-list implementation of the List interface. In addition to 
+implementing the List interface, this class provides the methods for retrieving, inserting, and removing 
+elements from both ends of the list.
+
+create an array in MyArrayList
+private E[] data = (E[]) new Object[INITIAL_CAPACITY];
+
+Create an ArrayList in main()
+MyList<String> list = new MyArrayList<String>();
+
+for (String s: list){ //this is for the iterator, whatever objects are in the ArrayList (Strings in this case), go through list(the ArrayList)
+	//whatever
+}
+
+
+Can store duplicate elements
+
+Store an ordered collection of elements
+A data structure- an object that stores other objects, refered to as data or elements
+A collection of items accessible one after another beginning at the head and ending at the tail.
+Head is the first item in a list and tail is the last item in a list
+
+Linked Lists
+You can use a linked structure to implement a list to improve efficiency for adding and removing an element at the beginning
+of a list.
+
+Basic idea is to create a node for each element.  The node will contain the element as well as a pointer to the next node.
+We need to keep track of the head and the tail somehow.
+This change means when we insert and delete nodes, all we need to do is move the pointers around.
+Better than arrays when you have to move elements around or insert/delete them
+
+A node can be created from a class defined as follows:
+class Node<E> {
+	E element;
+	Node<E> next;
+	
+	public Node(E e) {
+		element = e;
+	}
+}
+
+
+Here is an example that creates a linked list to hold three nodes. Each node stores a string element.
+Step 1: Declare head and tail.
+
+Node<String> head = null; The list is empty now
+Node<String> tail = null;
+
+head and tail are both null. The list is empty.
+
+Create the first node and append it to the list, as shown in Figure 24.8. After the
+first node is inserted in the list, head and tail point to this node.
+
+head = new Node<>("Chicago");
+tail = head;
+
+Step 3: Create the second node and append it into the list, as shown in Figure 24.9a. To
+append the second node to the list, link the first node with the new node. The new node
+is now the tail node, so you should move tail to point to this new node, as shown in
+Figure 24.9b.
+
+tail.next = new Node<>("Denver");
+tail = tail.next;
+
+Step 4: make a new node and change tail to point at new node
+tail.next = new Node<>("Dallas");
+tail = tail.next;
+
+To make a new linkedList in main
+MyLinkedList<String> list = new MyLinkedList<>();
+
+ArrayLists vs LinkedLists
+If you need to support random access through an index without inserting or removing elements at the beginning
+of the list, ArrayList offers the most efficient collection. 
+
+If, however, your application requires the insertion or deletion of elements at the beginning of the list, you should choose
+LinkedList. 
+
+A list can grow or shrink dynamically. Once it is created, an array is fixed. If your application does not require the 
+insertion or deletion of elements, an array is the most efficient data structure.
+
+The critical difference between them pertains to internal implementation, which affects their performance. 
+ArrayList is efficient for retrieving elements
+LinkedList is efficient for inserting and removing elements at the beginning of the list
+Both have the same performance for inserting and removing elements in the middle or at the end of the list.
+
+5 List<Integer> arrayList = new ArrayList<>();
+6 arrayList.add(1); // 1 is autoboxed to new Integer(1)
+7 arrayList.add(2);
+8 arrayList.add(3);
+9 arrayList.add(1);
+10 arrayList.add(4);
+11 arrayList.add(0, 10);
+12 arrayList.add(3, 30);
+13 System.out.println("A list of integers in the array list:");
+14 System.out.println(arrayList);
+
+
+17 LinkedList<Object> linkedList = new LinkedList<>(arrayList);
+18 linkedList.add(1, "red");
+19 linkedList.removeLast();
+20 linkedList.addFirst("green");
+21
+22 System.out.println("Display the linked list forward:");
+23 ListIterator<Object> listIterator = linkedList.listIterator();
+24 while (listIterator.hasNext()) {
+25 System.out.print(listIterator.next() + " ");
+26 }
+27 System.out.println();
+
+Queues and LinkedLists
+You can use LinkedList to create a queue. LinkedList is ideal for queue operations because it is efficient for inserting and removing
+elements from both ends of a list.
+
+
+Deque
+Deque supports element insertion and removal at both ends.
+The methods addFirst(e), removeFirst(), addLast(e), removeLast(), getFirst(), and getLast() are defined in the Deque interface.
+
+Stacks and Arrays
+
+
+Generics________________________________________________________________________
+parameterized types
+allows us to pass type names such as Integer, String or BankAccount as arguments
+ie: log.insert(String);
+In generics we pass a type (ie String) rather than a value for a type (ie "Elvis")
+this lets us define a collection class as containing elements of type T where T is the placeholder for the name of a type
+
+public class Log<T> {
+	private T[] log;	//array that holds objects of class T
+	private int lastIndex = -1;	//index of last T in the array
+}
+Generics provides the flexibility to design generally usable collections but retain the benefit of Javas strong type checking
+
+Exceptions________________________________________________________________________________________
+RuntimeExceptions: divide by zero, ArrayIndexOutOfBounds etc. exceptions
+not required to explicitly handle these because they can occur at any time for a number of reasons
+These errors are Unchecked Exceptions
+
+Exceptions are thrown from a method. The caller can Catch and Handle these Exceptions
+never let a method terminate the program, the caller should decide when to terminate the program
+ 
+To throw and catch an exception:
+
+Method that contains the exception
+public static int divide(int a, int b) throws ArithmeticException
+	{
+		if (b == 0) 
+		{
+			throw new ArithmeticException("can\'t divide by zero!");
+		}
+		return (a / b);
+	}
+Caller of the method that catches the exception
+public static void main(String[] args) {
+	Scanner input = new Scanner(System.in);
+	System.out.println("Enter two values:");
+	int a = input.nextInt();
+	int b = input.nextInt();
+
+	try {
+		int result = divide(a, b);
+		System.out.println("Your result is: " + result);
+	} catch(ArithmeticException e) {
+		System.out.println("Can't divide by zero, sorry!");
+	}
+}
+Separate class for the exception 
+public class ArithmeticException 
+    extends RuntimeException 
+    {
+	public ArithmeticException() {
+		super();
+	}
+	public ArithmeticException(String message) {
+		super(message);
+	}
+}
+
+exception is an object created from an exception class
+key benefit of exception handling is separating the detection of an error in the called method from the handling of an error done in the
+calling method
+checked exceptions: compiler forces programmer to deal with them in a try/catch block
+unchecked exceptions dont, because there are just so many possibilites for unchecked exceptions, these exceptions are errors in 
+logic. Otherwise code would be flooded w try/catch blocks
+
+public void myMethod() throws IOException
+
+all checked exceptions must be declared in method header,declaring exceptions, so that caller can be aware of exception that might be thrown 
+
+If the method might throw multiple exceptions, add a list of the exceptions, separated by commas, after throws:
+public void myMethod()
+throws Exception1, Exception2, ..., ExceptionN
+
+Note: if a superclass doesnt declare an exception in its method, you cannot override the method in the subclass to declare an exception in its method
+
+The keyword to declare an exception is throws, and the keyword to throw an exception is throw.
+
+The order in which exceptions are specified in a catch block is important. A compile
+error will result if you specify an exception object of a class after an exception object of
+the superclass of that class
+Aritmetic >> Runtime >> Exception
+
+
+When an exception occurs in a method, the method exits immediately if it does not
+catch the exception. If the method is required to perform some task before exiting, you
+can catch the exception in the method and then rethrow it to its caller.
+
+An exception occurs in a method. If you want the exception to be processed by its caller, you should create an exception object and throw it. If you can handle the exception in the method where it occurs, there is no need to throw it.
+
+When should you use the try-catch block in the code? You should use it to deal with unexpected error conditions. Do not use it to deal with simple, expected situations. 
+
+MultiDimensional Arrays______________________________
+syntax: int[][] matrix = new int[10][10]; 
+		(an array of 10 rows with 10 columns)
+
+to populate an array you need to use a nested for loop
+//multiplication table
+for (i = 0; i < matrix.length; i++) {
+	for (j = 0; j < matrix[i].length; j++){
+		matrix[i][j] = i*j;
+		System.out.println(matrix[i][j]);
+	}
+	System.out.println(" ");
+}
+
+A 2D array is an array of an array where array[i][j]
+the ith row of an array contains the j array
+
+int[][] randomArray = new int[4][6];
+
+0 1 2 3 4 5
+1 9 4 7 1 9
+2 8 1 3 4 6
+3 2 3 9 4 8
+
+Recursion__________________________________________________________________________________
+a recursive method is a method that calls itself, unlike methods that are called from main()
+Two Rules of Recursion:
+Base case:  You must always have some base case which can be solved without recursion
+Making Progress: For cases that are to be solved recursively, the recursive call must always be a case that makes progress toward the base case.
+
+In variation #3, we do not work towards our base case.  This causes infinite recursion and will cause our program to crash.
+Java throws a StackOverflowError error.
+(this is with recursive infinite loop example where 3 > 2)
+
+Tail recursion is when the last line of a method makes the recursive call.
+Dont do tail recursion, it wastes too much energy! Because the stack frames...methods? are already completed but still on stack
+To fix tail recursion, put method body in a while loop and replace recursive call with assignment statement for each method argument
+watch out for circular recursions as well, ie: ax+1 calls ax calls ax+1
+
+Interfaces
+Like abstract classes, but a class can implement any number of interfaces...multiple inheritance without many of it's problems
+CANNOT BE INSTANTIATED
+Can be used as a data type for variables
+Can be used as result of a cast operation as well
+Interfaces can only contain abstract methods and constants
+
+syntax________________________
+modifier interface interfaceID
+{
+  //constants
+  //method signatures
+}
+___________________
+public class Circle 
+extends GeometricObject 
+implements  Comparable 
+{
+	// define class here make sure to implement all 
+	//the abstract methods contained in the interface(s)
+}
+____________________________________________
+An interface can extend other interfaces too
+
+modifier interface interfaceID 
+extends comma-delimited-list-of-interfaces
+{
+  //constants/method signatures
+}
+
+Differences between 	Interfaces  		and 		Abstract Classes
+		Fields 			Only constants 					Variable and/or constants
+		Methods 		No implementation allowed		abstract or concrete
+		Inheritance 	Subclass can implement many 	Subclass can inherit only 1 class
+						interfaces, can extend 			Can implement many interfaces
+						numerous interfaces, cannot 	Only extends 1 class
+						extend a class		
+		Root/Names 		none 							Object (of all classes
+
+Class names are nouns. Interface names may be adjectives or nouns.
+
+Since all data fields are public static final and all methods are public abstract
+in an interface, Java allows these modifiers to be omitted. Therefore the following interface
+definitions are equivalent:
+
+public interface T 
+{
+	public static final int K = 1;
+	public abstract void p();
+}
+
+public interface T 
+{
+	int K = 1;
+	void p();
+}
+
+Java allows only single inheritance for class extension but allows multiple extensions for
+interfaces. For example,
+public class NewClass extends BaseClass
+implements Interface1, ..., InterfaceN 
+{
+...
+}
+
+An interface can inherit other interfaces using the extends keyword. Such an interface is
+called a subinterface. For example, NewInterface in the following code is a subinterface of
+Interface1, . . . , and InterfaceN.
+public interface NewInterface extends Interface1, ... , InterfaceN 
+{
+// constants and abstract methods
+}
